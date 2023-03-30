@@ -1,0 +1,11 @@
+{products_data.map(item => (     
+                <ItemProduct 
+                id={item[1]} 
+                title={item[2]} 
+                price={item[3]} 
+                image={item[4]}
+                description={item[5]} 
+                count={item[6]} 
+                rate={item[7]} 
+                />
+              ))}
