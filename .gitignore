@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Firebase
+Firebase.json
+Firebase-debug.log
+Firebase.js
+Firebase.jsx
+Firebase-auth.js
+Firebase-functions.js
+Firebase-messaging.js
+Firebase-storage.js
+Ffirebase-config.js

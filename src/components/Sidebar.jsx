@@ -22,7 +22,7 @@ let Sidebar = () => {
       //));
       
     let { isOpen, SidebarClose } = useContext(SidebarContext);
-    let { cart, addToCart } = useContext(CartContext)
+    let { cart, clearCart } = useContext(CartContext)
 
     return (
         <div className={`${isOpen ? 'right-0' : '-right-full'} w-full bg-white fixed top-0 h-full shadow-2xl
@@ -37,10 +37,22 @@ let Sidebar = () => {
                         <IoMdArrowForward className="text-2xl" />
                 </div>
             </div>
-            <div>
+            <div className=" ">
                 {cart.map((item) => {
                     return <CartItemProduct id={item.id} image={item.image} title={item.title} amount={item.amount} price={item.price}></CartItemProduct>
                 })} 
+
+            <div className="flex w-full justify-between items-center">
+                <div className="uppercase font-semibold">
+                    <span className="mr-2">Total:</span> $1000
+                </div>
+
+                <div onClick={clearCart} 
+                    className=" cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl">
+                    <FiTrash2 />
+                </div>
+            </div>
+
             </div>
         </div>
     );

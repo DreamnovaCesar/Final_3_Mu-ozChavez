@@ -12,7 +12,7 @@ import { CartContext } from '../context/CartContext';
 
 let CartItemProduct = (props) => {
 
-  let { removeFromCart } = useContext(CartContext);
+  let { removeFromCart, increaseAmount, decreaseAmount} = useContext(CartContext);
 
   return (
 
@@ -34,14 +34,14 @@ let CartItemProduct = (props) => {
             <div className='flex gap-x-2 h-[36px] text-sm'>
               <div className='flex flex-1 max-w-[100px]  items-center
               h-full border text-primary font-medium'>
-                <div className='flex-1 h-full flex justify-center items-center
+                <div onClick={()=>decreaseAmount(props.id)} className='flex-1 h-full flex justify-center items-center
                 cursor-pointer'>
                   <IoMdRemove/>
                 </div>
                 <div className='h-full flex justify-items-center items-center px-2'>
                   {props.amount}
                 </div>
-                <div className='flex-1 h-full flex justify-center items-center
+                <div onClick={()=>increaseAmount(props.id)} className='flex-1 h-full flex justify-center items-center
                 cursor-pointer'>
                   <IoMdAdd/>
                 </div>
