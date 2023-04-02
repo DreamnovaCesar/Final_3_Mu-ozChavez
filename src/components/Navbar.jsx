@@ -13,6 +13,8 @@ const Navbar = () => {
   
   return (
     <nav className="bg-gray-900 shadow-lg p-5">
+      <div className="">
+      </div>
       <ul className="flex justify-end items-start p-1">
         <CartWidget />
       </ul>

@@ -16,8 +16,31 @@ About Vite
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)&nbsp;
 
-## Gif instance
-![Alt Text](Part2.gif)
+### Visual instance
+
+`Home page.`
+
+![Alt Text](Select_CSV.gif)
+
+`Description page.`
+
+![Alt Text](Download_waifus.png)
+
+EmptyBag.
+
+![Alt Text](EmptyBag.png)
+
+`Adding products.`
+
+![Alt Text](AddingProducts.png)
+
+`Home and Links gif.`
+
+![Alt Text](Final_projects_links.gif)
+
+`Description, bag and products gif.`
+
+![Alt Text](Final_projects_products.gif)
 
 ## Getting Started
 To get started with this project, follow these steps:

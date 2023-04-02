@@ -5,7 +5,7 @@ let ItemProduct = (props) => {
 
   return (
     // The product item container
-    <div className="bg-white relative max-w-md mx-2 my-5 rounded-md shadow-md overflow-hidden transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+    <div className="bg-white relative max-w-md mx-3 my-5 rounded-md shadow-md overflow-hidden transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110">
       {/* The link to the product description page */}
       <Link to={`/DescriptionProduct/${props.id}`}>
         {/* The product image */}

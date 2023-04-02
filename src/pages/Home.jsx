@@ -34,6 +34,11 @@ function Home() {
   let handleCategoryChange = (category) => {
     setSelectedCategory(category);
     navigate(`/Category/${category}`);
+
+    if (!category) {
+      return <Loading />; 
+    }
+
   };
 
   // Define a function called "handleResetCategory" that resets the selected category and updates the URL
@@ -42,19 +47,36 @@ function Home() {
     navigate("/");
   };
 
+  
   // Filter the products based on the selected category
   let filteredProducts =
-    selectedCategory && selectedCategory !== "ALL"
+    selectedCategory && selectedCategory !== "None"
       ? products.filter((product) => product.category === selectedCategory)
       : products;
 
   // Create an array of all categories for the select dropdown menu
-  let allCategories = ["ALL", ...new Set(products.map((product) => product.category))];
+  let allCategories = ["None", ...new Set(products.map((product) => product.category))];
 
   // Log the filtered products and the category for debugging purposes
   console.log(filteredProducts);
   console.log(category);
 
+  // Create an array of links for all categories
+  let categoryLinks = allCategories.map((category) => (
+    <li key={category}>
+      <a
+        href={`/Category/${category}`}
+        className={selectedCategory === category ? "font-bold" : ""}
+        onClick={(e) => {
+          e.preventDefault();
+          handleCategoryChange(category);
+        }}
+      >
+        {category}
+      </a>
+    </li>
+  ));
+  
   // Show a loading component if the "filteredProducts" data is not available yet
   if (!filteredProducts) {
     return <Loading />; 
@@ -63,8 +85,10 @@ function Home() {
   // Render the Home component with the following elements
   return (
     <div>
+      
       <Sidebar />
       <Navbar />
+      
       <div className="p-5">
         <label htmlFor="category-select">Select a category:  </label>
         <select

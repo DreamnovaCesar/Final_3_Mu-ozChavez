@@ -1,5 +1,5 @@
 import React from "react";
-import { createContext, useState, useEffect, useCallback } from "react";
+import { createContext, useState, useEffect } from "react";
 
 // Create the CartContext
 export let CartContext = createContext();
@@ -23,49 +23,61 @@ let CartProvider = ({ children }) => {
     }, [cart]);
 
     // Define functions to manipulate the cart
-    let addToCart = useCallback((product, id, increase = false) => {
-        setCart(prevCart => {
-            let cartItem = prevCart.find(item => item.id === id);
-    
-        if (cartItem && !increase) {
-            // If the item exists and increase is false, create a new cart with the updated amount
-            return prevCart.map(item => item.id === id ? {...item, amount: item.amount + 1} : item);
-        } else if (cartItem && increase) {
-            // If the item exists and increase is true, add the item to the cart with amount 1
-            return [...prevCart, {...product, amount: 1}];
-        } else {
-            // If the item does not exist, add it to the cart with amount 1
-            return [...prevCart, {...product, amount: 1}];
-        }
+    let addToCart = (product, id) => {
+        // Create a new item with the product and amount set to 1
+        let newItem = { ...product, amount: 1 };
+        
+        // Check if the item already exists in the cart
+        let cartItem = cart.find((item) => {
+            return item.id === id;
         });
-    }, []);
-  
-    let removeFromCart = useCallback((id) => {
-        setCart(prevCart => prevCart.filter(item => item.id !== id));
-    }, []);
-    
-    let clearCart = useCallback(() => {
+
+        if (cartItem){
+            // If the item exists, create a new cart with the updated amount
+            let newCart = [...cart].map((item) => {
+                if (item.id === id) {
+                    return { ...item, amount: cartItem.amount + 1};
+                } else {
+                    return item;
+                }
+            });
+            setCart(newCart);
+        } else {
+            // If the item does not exist, add it to the cart
+            setCart([...cart, newItem]);
+        }
+    };
+
+    let removeFromCart = (id) => {
+        let newCart = cart.filter((item) => item.id !== id);
+        setCart(newCart);
+    };
+
+    let clearCart = () => {
+        // Clear the cart by setting it to an empty array
         setCart([]);
-    }, []);
-    
-    let decreaseAmount = useCallback((id) => {
-        setCart(prevCart => {
-        const cartItem = prevCart.find(item => item.id === id);
-    
-        if (cartItem.amount > 1) {
-            // If the amount is greater than 1, create a new cart with the updated amount
-            return prevCart.map(item => item.id === id ? {...item, amount: item.amount - 1} : item);
-        } else {
-            // If the amount is 1, remove the item from the cart
-            return prevCart.filter(item => item.id !== id);
-        }
+    };
+
+    let increaseAmount = (id) => {
+        let newCart = [...cart].map((item) => {
+            if (item.id === id) {
+                return { ...item, amount: item.amount + 1 };
+            } else {
+                return item;
+            }
         });
-    }, []);
-    
-    let increaseAmount = useCallback((id) => {
-        let cartItem = cart.find(item => item.id === id);
-        addToCart(cartItem, id, true);
-    }, [cart, addToCart]);
+        setCart(newCart);
+    };
+    let decreaseAmount = (id) => {
+        let newCart = [...cart].map((item) => {
+            if (item.id === id) {
+                return { ...item, amount: item.amount - 1 };
+            } else {
+                return item;
+            }
+        }).filter((item) => item.amount > 0);
+        setCart(newCart);
+    };
 
     console.log(cart)
 
