@@ -1,7 +1,6 @@
 
 // ItemListContainer.js
 import React from 'react';
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IoClose } from 'react-icons/io5'
 import { IoMdRemove } from 'react-icons/io'
@@ -12,7 +11,11 @@ import { CartContext } from '../context/CartContext';
 
 let CartItemProduct = (props) => {
 
-  let { removeFromCart, increaseAmount, decreaseAmount} = useContext(CartContext);
+  let { 
+    removeFromCart, 
+    increaseAmount, 
+    decreaseAmount
+  } = useContext(CartContext);
 
   return (
 

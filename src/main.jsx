@@ -7,12 +7,16 @@ import ProductProvider from './context/ProductContext'
 import SidebarProvider from './context/SidebarContext'
 import CartProvider from './context/CartContext'
 
+import { ChakraProvider } from '@chakra-ui/react'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <CartProvider>
     <SidebarProvider>
       <ProductProvider>
         <React.StrictMode>
-          <App />
+          <ChakraProvider>
+            <App />
+          </ChakraProvider>
         </React.StrictMode>
       </ProductProvider>
   </SidebarProvider>

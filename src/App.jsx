@@ -5,7 +5,6 @@ import Contact from './pages/Contact';
 import AddProducts from './pages/AddProducts';
 
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import ProductProvider from './context/ProductContext';
 
 function App() {
 

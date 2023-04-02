@@ -1,8 +1,9 @@
 import { db } from "./firebase"
 import { addDoc, collection } from "@firebase/firestore"
 
+// Define an arrow function component called AddProduct
 let AddProduct = () => {
-
+    // Create an array of products
     let products = [
     {
         category: 'GPU',
@@ -337,12 +338,15 @@ let AddProduct = () => {
     }
 ];
 
+    // Connect to the "products" collection in a Firestore database
     let productsCollection = collection(db, "products");
 
+    // Define an asynchronous function that adds a new product document to the collection
     let createProduct = async (product) => {
         await addDoc(productsCollection, product)
     };
     
+    // Define an asynchronous function that adds all products in the array to the collection and logs each product
     let handleAddProducts = async () => {
         for (let product of products) {
             await createProduct(product);
@@ -350,6 +354,7 @@ let AddProduct = () => {
         }
     };
 
+    // Render a button that triggers the handleAddProducts function when clicked
     return (
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -358,7 +363,7 @@ let AddProduct = () => {
           Add Products
         </button>
       );
-
 };
 
+// Export the AddProduct component as the default export of the module
 export default AddProduct;
