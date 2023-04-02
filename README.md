@@ -20,7 +20,7 @@ About Vite
 
 `Home page.`
 
-![Alt Text](Select_CSV.gif)
+![Alt Text](Home.png)
 
 `Description page.`
 
