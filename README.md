@@ -1,4 +1,4 @@
-# PreEntrega2_Mu-ozChavezReact
+# Final3_Mu-ozChavezReact
 
 This is a README file for a project developed using React.js, JavaScript, Tailwind, and Vite.
 
@@ -24,7 +24,7 @@ About Vite
 
 `Description page.`
 
-![Alt Text](Download_waifus.png)
+![Alt Text](Description.png)
 
 EmptyBag.
 
